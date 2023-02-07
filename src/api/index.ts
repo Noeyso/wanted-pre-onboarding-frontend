@@ -33,8 +33,9 @@ export const signin = (email: string, pw: string): Promise<void> => {
 };
 
 export function getTodos(): Promise<AxiosResponse<any, any>> {
-  const response = axios.get(`${URL}/todos`, { headers: { Authorization: `Bearer ${localStorage.getItem('login-token')}` } });
-  console.log(response);
+  const response = axios.get(`${URL}/todos`, {
+    headers: { Authorization: `Bearer ${localStorage.getItem('login-token')}` },
+  });
   return response;
 }
 
@@ -49,7 +50,6 @@ export function addTodo(todo: string): Promise<AxiosResponse<any, any>> {
       },
     }
   );
-  console.log(response);
   return response;
 }
 
@@ -64,7 +64,6 @@ export function updateTodo(id: number, todo: string, isCompleted: boolean): Prom
       },
     }
   );
-  console.log(response);
   return response;
 }
 
@@ -74,6 +73,5 @@ export function deleteTodo(id: number): Promise<AxiosResponse<any, any>> {
       Authorization: `Bearer ${localStorage.getItem('login-token')}`,
     },
   });
-  console.log(response);
   return response;
 }

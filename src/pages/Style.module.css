@@ -8,8 +8,10 @@
 }
 
 /* Login , Join */
-
-.container h3 {
+.title {
+  margin-bottom: 3rem;
+}
+.label {
   margin: 0;
   font-size: 1rem;
 }
@@ -34,6 +36,17 @@
 
 .button:disabled {
   opacity: 0.4;
+}
+.error {
+  color: red;
+  font-size: 0.9rem;
+  text-align: center;
+}
+.is_join {
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
 }
 
 /* TODO LIST */

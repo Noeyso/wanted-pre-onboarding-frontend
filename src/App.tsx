@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 import Login from './pages/Login';
@@ -9,10 +8,8 @@ import Todos from './pages/Todo';
 function Redirect() {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    console.log('rendering');
+  React.useEffect(() => {
     const loginToken = localStorage.getItem('login-token');
-    console.log(loginToken);
     if (loginToken) {
       navigate('/todo');
     } else {

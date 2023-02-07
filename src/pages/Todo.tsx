@@ -10,16 +10,17 @@ export default function Todo() {
   const [todoText, setTodoText] = React.useState<string>('');
   const [todos, setTodos] = React.useState<Todo[]>([]);
   const [modify, setModify] = React.useState<{ id: number; isModify: boolean }>({ id: -1, isModify: false });
-  const inputRef = React.useRef<HTMLInputElement>(null);
   const modifyRef = React.useRef<HTMLInputElement>(null);
   const itemRef = React.useRef<HTMLLIElement[] | null[]>([]);
 
+  const getTodoList = () =>
+    getTodos().then((res) => {
+      setTodos(res.data as Todo[]);
+    });
+
   React.useEffect(() => {
-    //console.log(localStorage.getItem('login-token'));
     if (localStorage.getItem('login-token')) {
-      getTodos().then((res) => {
-        setTodos(res.data as Todo[]);
-      });
+      getTodoList();
     } else {
       navigate('/signin');
     }
@@ -27,22 +28,20 @@ export default function Todo() {
 
   const onAddTodo = () => {
     addTodo(inputText).then(() => {
-      getTodos().then((res) => setTodos(res.data as Todo[]));
+      getTodoList();
       setInputText('');
       itemRef.current[todos.length - 1]!.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   };
 
   const onCheck = (e: React.ChangeEvent<HTMLInputElement>, id: number, text: string) => {
-    console.log(`id : ${id}, text:${text}`);
     updateTodo(id, text, e.currentTarget.checked).then(() => {
-      getTodos().then((res) => setTodos(res.data as Todo[]));
+      getTodoList();
     });
   };
   const onModify = (id: number, text: string, isCompleted: boolean) => {
-    console.log(`id : ${id}, text:${text}`);
     updateTodo(id, text, isCompleted).then(() => {
-      getTodos().then((res) => setTodos(res.data as Todo[]));
+      getTodoList();
       setModify({ id: -1, isModify: false });
     });
   };
@@ -56,7 +55,7 @@ export default function Todo() {
 
   const onDelete = (id: number) => {
     deleteTodo(id).then(() => {
-      getTodos().then((res) => setTodos(res.data as Todo[]));
+      getTodoList();
     });
   };
 
