@@ -15,7 +15,7 @@ export default function Login() {
     if (loginToken) {
       navigate('/todo');
     }
-  }, []);
+  }, [navigate]);
 
   const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.currentTarget.value);

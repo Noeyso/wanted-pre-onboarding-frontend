@@ -15,7 +15,7 @@ function Redirect() {
     } else {
       navigate('/signin');
     }
-  }, []);
+  }, [navigate]);
   return <></>;
 }
 function App() {

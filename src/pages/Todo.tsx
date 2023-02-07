@@ -24,7 +24,7 @@ export default function Todo() {
     } else {
       navigate('/signin');
     }
-  }, []);
+  }, [navigate]);
 
   const onAddTodo = () => {
     addTodo(inputText).then(() => {
