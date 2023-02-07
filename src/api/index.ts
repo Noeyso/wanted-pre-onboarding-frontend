@@ -52,3 +52,28 @@ export function addTodo(todo: string): Promise<AxiosResponse<any, any>> {
   console.log(response);
   return response;
 }
+
+export function updateTodo(id: number, todo: string, isCompleted: boolean): Promise<AxiosResponse<any, any>> {
+  const response = axios.put(
+    `${URL}/todos/${id}`,
+    { todo, isCompleted },
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('login-token')}`,
+        'Content-Type': 'application/json',
+      },
+    }
+  );
+  console.log(response);
+  return response;
+}
+
+export function deleteTodo(id: number): Promise<AxiosResponse<any, any>> {
+  const response = axios.delete(`${URL}/todos/${id}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('login-token')}`,
+    },
+  });
+  console.log(response);
+  return response;
+}
