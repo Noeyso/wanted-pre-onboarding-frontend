@@ -1,0 +1,61 @@
+.container {
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 2rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+/* Login , Join */
+
+.container h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.input {
+  margin: 1rem 0;
+}
+
+.button {
+  font-weight: 700;
+  font-size: 1rem;
+  color: white;
+  padding: 0.5rem 0;
+  margin-top: 2rem;
+  background: #00dbb4;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.button:hover {
+  transform: scale(1.02);
+}
+
+.button:disabled {
+  opacity: 0.4;
+}
+
+/* TODO LIST */
+
+.todo_item label {
+  display: flex;
+  align-items: center;
+}
+
+.add_todo {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.add_todo input {
+  width: 70%;
+}
+.add_todo button {
+  width: 20%;
+  font-weight: 700;
+  color: white;
+  margin-left: 0.5rem;
+  background: #00dbb4;
+}
